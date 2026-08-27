@@ -16,5 +16,10 @@ Player({
 void addXp(int amount) {
   xp += amount;
 
+  while (xp >= 100) {
+    xp -= 100;
+    level++;
+  }
+
 }
 }

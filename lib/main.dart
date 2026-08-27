@@ -42,6 +42,14 @@ void main() {
   print('Completou novamente: $completedAgain');
   print('XP final: ${player.xp}');
 
+  print('Level: ${player.level}');
+print('XP: ${player.xp}');
+
+player.addXp(250);
+
+print('Level: ${player.level}');
+print('XP: ${player.xp}');
+
   runApp(const MyApp());
 }
  
