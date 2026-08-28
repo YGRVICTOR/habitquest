@@ -5,6 +5,7 @@ class Habit {
   final int xp;
   final String frequency;
   final List<DateTime> completedDates;
+  int streak = 0;
 
   Habit({
     required this.id,
@@ -16,10 +17,16 @@ class Habit {
   }) : completedDates = completedDates ?? [];
 
   bool complete() {
+    if (hasMissedDays()) {
+      streak = 0;
+    }
+
     if (!isCompletedToday()) {
       completedDates.add(DateTime.now());
+      streak++;
       return true;
     }
+
     return false;
   }
 
@@ -31,5 +38,17 @@ class Habit {
           date.month == today.month &&
           date.day == today.day;
     });
+  }
+
+  bool hasMissedDays() {
+    if (completedDates.isEmpty) {
+      return false;
+    }
+
+    final lastCompletedDate = completedDates.last;
+    final today = DateTime.now();
+    final difference = today.difference(lastCompletedDate).inDays;
+
+    return difference > 1;
   }
 }

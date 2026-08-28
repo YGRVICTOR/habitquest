@@ -7,8 +7,7 @@ import 'models/habit.dart';
 import 'models/player.dart';
 import 'services/reward_service.dart';
 
-void main() {
-  
+  void main() {
   final player = Player(
     id: '1',
     name: 'Victor',
@@ -20,9 +19,13 @@ void main() {
     icon: '📚',
     xp: 50,
     frequency: 'Todos os dias',
+    completedDates: [
+      DateTime.now().subtract(const Duration(days: 2)),
+    ],
   );
 
-  print('XP inicial: ${player.xp}');
+  print('Streak antes: ${habit.streak}');
+  print('Perdeu algum dia: ${habit.hasMissedDays()}');
 
   final completed = habit.complete();
 
@@ -31,24 +34,8 @@ void main() {
   }
 
   print('Completou: $completed');
+  print('Streak depois: ${habit.streak}');
   print('XP depois: ${player.xp}');
-
-  final completedAgain = habit.complete();
-
-  if (completedAgain) {
-    RewardService.giveHabitReward(player, habit);
-  }
-
-  print('Completou novamente: $completedAgain');
-  print('XP final: ${player.xp}');
-
-  print('Level: ${player.level}');
-print('XP: ${player.xp}');
-
-player.addXp(250);
-
-print('Level: ${player.level}');
-print('XP: ${player.xp}');
 
   runApp(const MyApp());
 }
