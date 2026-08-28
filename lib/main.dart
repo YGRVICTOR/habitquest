@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 
-
 import 'models/habit.dart';
 import 'models/player.dart';
 import 'services/reward_service.dart';
@@ -23,6 +22,16 @@ import 'services/reward_service.dart';
       DateTime.now().subtract(const Duration(days: 2)),
     ],
   );
+final habitMap = habit.toMap();
+
+print(habitMap);
+
+final newHabit = Habit.fromMap(habitMap);
+
+print(newHabit.name);
+print(newHabit.xp);
+print(newHabit.streak);
+print(newHabit.completedDates);
 
   print('Streak antes: ${habit.streak}');
   print('Perdeu algum dia: ${habit.hasMissedDays()}');
@@ -36,6 +45,8 @@ import 'services/reward_service.dart';
   print('Completou: $completed');
   print('Streak depois: ${habit.streak}');
   print('XP depois: ${player.xp}');
+
+  print(habit.toMap());
 
   runApp(const MyApp());
 }
