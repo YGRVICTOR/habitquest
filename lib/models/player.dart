@@ -13,6 +13,12 @@ Player({
   this.streak = 0,
 });
 
+Player.fromMap(Map<String, dynamic> map)
+  : id = map['id']
+    name = map['name']
+    xp = map['xp']
+    level = map ['level'];
+
 void addXp(int amount) {
   xp += amount;
 
@@ -22,4 +28,13 @@ void addXp(int amount) {
   }
 
 }
+MapString, dynamic> toMap(){
+  return{
+    'id': id,
+    'name': name,
+    'xp': xp,
+    'level': level,
+  }
+}
+
 }

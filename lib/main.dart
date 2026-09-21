@@ -12,6 +12,17 @@ import 'services/reward_service.dart';
     name: 'Victor',
   );
 
+final playerMap = player.toMap();
+
+print('Player Map: $playerMap');
+
+final newPlayer =
+Player.fromMap(playerMap);
+
+print('Nome: ${newPlayer.name}');
+print('xp: ${newPlayer.xp}');
+print('level: ${newPlayer.level}');
+
   final habit = Habit(
     id: '1',
     name: 'Estudar Flutter',
